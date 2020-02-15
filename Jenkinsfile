@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing 3.. '
+                echo 'Testing 4.. '
             }
         }
         stage('Deploy') {
