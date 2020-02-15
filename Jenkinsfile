@@ -49,7 +49,9 @@ pipeline {
               steps{
                 sh 'docker ps -f name=andresmatos/reto-devops -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker container ls -a -fname=andresmatos/reto-devops -q | xargs -r docker container rm'
-                dockerImage.withRun('-p 8081:8080')
+                script {
+                    dockerImage.withRun('-p 8081:8080')
+                }
               }
         }
     }
