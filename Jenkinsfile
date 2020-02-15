@@ -54,5 +54,12 @@ pipeline {
                 sh "docker rmi $registry:$BUILD_NUMBER"
               }
         }
+
+        stage('Deploy') {
+              steps{
+                sh "docker stop $(docker ps -aq)"
+                sh "docker run -p 8081:8080 $registry:$BUILD_NUMBER"
+              }
+        }
     }
 }
