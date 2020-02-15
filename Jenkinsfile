@@ -47,10 +47,9 @@ pipeline {
 
         stage('Deploy') {
               steps{
-                script {
-                    sh "docker stop $(docker ps -aq)"
-                    sh "docker run -p 8081:8080 $registry:$BUILD_NUMBER"
-                }
+                sh 'docker ps -f name=andresmatos/reto-devops -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=andresmatos/reto-devops -q | xargs -r docker container rm'
+
               }
         }
     }
