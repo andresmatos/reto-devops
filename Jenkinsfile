@@ -3,6 +3,7 @@ pipeline {
     environment {
         registry = "andresmatos/reto-devops"
         registryCredential = 'dockerhub'
+        dockerImage = ''
     }
 
     options {
