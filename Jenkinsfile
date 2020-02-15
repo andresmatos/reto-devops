@@ -39,16 +39,6 @@ pipeline {
               }
          }
 
-         stage('Deploy') {
-                       steps{
-                         script {
-                           docker.withRegistry( '', registryCredential ) {
-                             dockerImage.push()
-                           }
-                         }
-                 }
-          }
-
         stage('Remove Unused docker image') {
               steps{
                 sh "docker rmi $registry:$BUILD_NUMBER"
@@ -57,8 +47,10 @@ pipeline {
 
         stage('Deploy') {
               steps{
-                sh "docker stop $(docker ps -aq)"
-                sh "docker run -p 8081:8080 $registry:$BUILD_NUMBER"
+                script {
+                    sh "docker stop $(docker ps -aq)"
+                    sh "docker run -p 8081:8080 $registry:$BUILD_NUMBER"
+                }
               }
         }
     }
