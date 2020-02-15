@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'mvn test'
+                sh 'mvn test'
             }
         }
         stage('Building image') {
@@ -52,5 +52,11 @@ pipeline {
                 sh 'docker run -d -p 8081:8080 $registry:$BUILD_NUMBER'
               }
         }
+
+        stage('Functional Test') {
+              steps {
+                   echo 'Functional Test'
+              }
+         }
     }
 }
