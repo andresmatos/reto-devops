@@ -1,4 +1,10 @@
 pipeline {
+
+    environment {
+        registry = "andresmatos/reto-devops"
+        registryCredential = 'dockerhub'
+    }
+
     options {
         buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
     }
@@ -15,10 +21,27 @@ pipeline {
                 echo 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('Building image') {
             steps {
-                echo 'Deploying....1'
+                script {
+                        docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
+        stage('Deploy Image') {
+              steps{
+                script {
+                  docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                  }
+                }
+              }
+         }
+        stage('Remove Unused docker image') {
+              steps{
+                sh "docker rmi $registry:$BUILD_NUMBER"
+              }
+        }
+
     }
 }
