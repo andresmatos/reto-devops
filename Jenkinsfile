@@ -48,11 +48,8 @@ pipeline {
 
         stage('Deploy') {
               steps{
-                sh 'docker stop $(docker ps -aq) '
-                sh 'docker rm $(docker ps -aq) '
-                sh 'docker rmi $(docker images -q) -f '
-                sh 'docker run -d -p 8081:8080 $registry:$BUILD_NUMBER'
-              }
+               echo 'Functional Test 3'
+             }
         }
 
         stage('Functional Test') {
