@@ -48,13 +48,15 @@ pipeline {
 
         stage('Deploy') {
               steps{
-               echo 'Functional Test 3'
-             }
+                sh 'docker ps -f name=$registry:$BUILD_NUMBER -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=$registry:$BUILD_NUMBER -q | xargs -r docker container rm'
+                sh 'docker run -d -p 8081:8080 $registry:$BUILD_NUMBER'
+              }
         }
 
         stage('Functional Test') {
               steps {
-                   echo 'Functional Test 3'
+                   echo 'Functional Test'
               }
          }
     }
