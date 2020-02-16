@@ -48,8 +48,8 @@ pipeline {
 
         stage('Deploy') {
               steps{
-                sh 'docker ps -f name=$registry:$BUILD_NUMBER -q | xargs --no-run-if-empty docker container stop'
-                sh 'docker container ls -a -fname=$registry:$BUILD_NUMBER -q | xargs -r docker container rm'
+                sh 'docker ps -f name=$registry -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker container ls -a -fname=$registry -q | xargs -r docker container rm'
                 sh 'docker run -d -p 8081:8080 $registry:$BUILD_NUMBER'
               }
         }
