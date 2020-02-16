@@ -26,14 +26,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://3.20.89.163:8081:8081/",
+					"raw": "http://127.0.0.1:8081/",
 					"protocol": "http",
 					"host": [
-						"ec2-3-20-89-163",
-						"us-east-2",
-						"compute",
-						"amazonaws",
-						"com"
+						"127.0.0.1"
 					],
 					"port": "8081",
 					"path": [
