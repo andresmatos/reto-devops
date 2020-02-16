@@ -26,10 +26,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://3.20.89.163:8081/",
+					"raw": "http://localhost:8081/",
 					"protocol": "http",
 					"host": [
-						"3.20.89.163"
+						"localhost"
 					],
 					"port": "8081",
 					"path": [
