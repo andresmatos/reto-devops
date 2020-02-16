@@ -57,7 +57,7 @@ pipeline {
 
         stage('Functional Test') {
               steps {
-                   echo 'Functional Test'
+                   echo 'Functional Test 3'
               }
          }
     }
