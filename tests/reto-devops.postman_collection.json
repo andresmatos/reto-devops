@@ -26,14 +26,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/",
-					"protocol": "http",
+					"raw": "{{base_url}}",
 					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						""
+						"{{base_url}}"
 					]
 				}
 			},
