@@ -57,7 +57,8 @@ pipeline {
 
         stage('Functional Test') {
               steps {
-                   echo 'Functional Test 2'
+                  sh ' npm install -g newman'
+                  sh 'newman run tests/reto-devops.postman_collection.json -e tests/Prod.postman_environment.json '
               }
          }
     }
