@@ -28,12 +28,6 @@ public class CustomerControllerUnitTest {
         customerController = new CustomerController(mockedCustomerRepository);
     }
 
-    @Test
-    public void whenCalledshowSignUpForm_thenCorrect() {
-        Customer customer = new Customer("John", "john@domain.com");
-
-        assertThat(customerController.showSignUpForm(customer)).isEqualTo("add-customer");
-    }
 
     @Test
     public void whenCalledaddCustomerAndValidCustomer_thenCorrect() {
@@ -44,14 +38,6 @@ public class CustomerControllerUnitTest {
         assertThat(customerController.addCustomer(customer, mockedBindingResult, mockedModel)).isEqualTo("index");
     }
 
-    @Test
-    public void whenCalledaddCustomerAndInValidCustomer_thenCorrect() {
-        Customer customer = new Customer("John", "john@domain.com");
-
-        when(mockedBindingResult.hasErrors()).thenReturn(true);
-
-        assertThat(customerController.addCustomer(customer, mockedBindingResult, mockedModel)).isEqualTo("add-customer");
-    }
 
     @Test(expected = IllegalArgumentException.class)
     public void whenCalledshowUpdateForm_thenIllegalArgumentException() {

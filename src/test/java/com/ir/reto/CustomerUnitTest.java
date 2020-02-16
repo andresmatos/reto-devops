@@ -37,9 +37,4 @@ public class CustomerUnitTest {
         assertThat(customer.getEmail()).isEqualTo("john@domain.com");
     }
 
-    @Test
-    public void whenCalledtoString_thenCorrect() {
-        Customer customer = new Customer("Julie", "julie@domain.com");
-        assertThat(customer.toString()).isEqualTo("Customer{id=0, name=Julie, email=julie@domain.com}");
-    }
 }
