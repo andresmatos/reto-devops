@@ -57,7 +57,7 @@ pipeline {
 
         stage('Functional Test') {
             steps {
-                echo "TO-DO"
+                echo "TO-DO prueba"
               }
               //steps {
               //   sh 'newman run tests/reto-devops.postman_collection.json -e tests/Prod.postman_environment.json '
